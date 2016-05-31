@@ -1,4 +1,6 @@
-DIRECTORY_ALIAS='./aliases'
+DIRECTORY_CURRENT_EXECUTION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIRECTORY_PROJECT=`dirname $0`
+DIRECTORY_ALIAS=$DIRECTORY_PROJECT/aliases
 
 # Aliases
 source $DIRECTORY_ALIAS/git.zsh
