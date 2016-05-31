@@ -3,6 +3,14 @@
 # taildir
 # taildir *error.log
 taildir() {
+    watch=$(/usr/bin/which watch)
+
+    if [ "$watch" -eq "" ]
+    then
+        echo "The command 'watch' was not found"
+        exit 1
+    fi
+
     if [ "$1" != "" ]
     then
         watch "ls -lrt $@ | tail -10"
