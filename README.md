@@ -9,7 +9,8 @@ Personnal oh-my-zsh plugins
 ### Manually
 
     git clone https://github.com/zilongqiu/oh-my-zsh-plugins.git
-    source ./oh-my-zsh-plugins/oh-my-zsh-custom.plugin.zsh
+    cd ./oh-my-zsh-plugins
+    source ./oh-my-zsh-custom.plugin.zsh
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
