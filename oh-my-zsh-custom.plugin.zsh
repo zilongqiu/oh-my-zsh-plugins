@@ -1,5 +1,5 @@
 # TEST install
-alias zqiutest="echo It works"
+alias testzilong="echo It works"
 
 # GIT aliases
 # DOCKER aliases
