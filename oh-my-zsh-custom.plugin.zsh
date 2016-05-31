@@ -1,3 +1,6 @@
+# TEST install
+alias zqiutest="echo It works"
+
 # GIT aliases
 # DOCKER aliases
 # PHPUNIT aliases
