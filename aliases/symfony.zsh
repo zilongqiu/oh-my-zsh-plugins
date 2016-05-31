@@ -1,4 +1,18 @@
 ###
+# Check phpunit exist
+###
+function checkPhpUnit () {
+    if [ ! -x "$1" ] && [ ! -x "$2" ]
+    then
+        echo false
+        return
+    fi
+
+    echo true
+    return
+}
+
+###
 # Phpunit aliases
 #
 # With execution priority to the vendor phpunit
@@ -12,7 +26,7 @@ punit() {
     phpunit1="./vendor/phpunit/phpunit/phpunit"
     phpunit2=$(/usr/bin/which phpunit)
 
-    if [ ! -x "$phpunit1" ] && [ ! -x "$phpunit2" ]
+    if [ $(checkPhpUnit "$phpunit1" "$phpunit2") = false ]
     then
         echo "The command 'phpunit' was not found"
         return
@@ -31,3 +45,4 @@ punit() {
         $phpunit2 -c app/
     fi
 }
+
