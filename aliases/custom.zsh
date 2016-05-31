@@ -1,14 +1,18 @@
+###
 # Taildir
+#
 # usage examples :
+#
 # taildir
 # taildir *error.log
+###
 taildir() {
     watch=$(/usr/bin/which watch)
 
     if [ "$watch" -eq "" ]
     then
         echo "The command 'watch' was not found"
-        exit 1
+        return
     fi
 
     if [ "$1" != "" ]
@@ -19,10 +23,14 @@ taildir() {
     fi
 }
 
+###
 # Find file by name
+#
 # usage examples :
+#
 # findn . myfile.extension
 # findn / *.extension
+###
 findn () {
     sudo find "$1" -name "$2"
 }
