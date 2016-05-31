@@ -4,7 +4,7 @@ Personnal oh-my-zsh plugins
 
 ---
 
-## Install
+## Installation
 
 ### Manually
 
@@ -13,7 +13,7 @@ Personnal oh-my-zsh plugins
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
-If you prefer antigen over manual installation, add this line in your ~/.zshrc file
+If you prefer antigen over manual installation, add this line in your `~/.zshrc` file
 
     antigen-bundle zilongqiu/oh-my-zsh-plugins
 
