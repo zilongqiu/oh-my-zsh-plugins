@@ -1,15 +1,7 @@
-# TEST install
-alias testzilong="echo It works"
+DIRECTORY_ALIAS='./aliases'
 
-# GIT aliases
-# DOCKER aliases
-# PHPUNIT aliases
-# OTHERS aliases
-taildir() {
-    if [ "$1" != "" ]
-    then
-        watch "ls -lrt $@ | tail -10"
-    else
-        watch "ls -lrt | tail -10"
-    fi
-}
+# Aliases
+source $DIRECTORY_ALIAS/git.zsh
+source $DIRECTORY_ALIAS/docker.zsh
+source $DIRECTORY_ALIAS/phpunit.zsh
+source $DIRECTORY_ALIAS/custom.zsh
