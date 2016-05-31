@@ -1,16 +1,12 @@
-###
-# Check phpunit exist
-###
-function checkPhpUnit () {
-    if [ ! -x "$1" ] && [ ! -x "$2" ]
-    then
-        echo false
-        return
-    fi
+PHPUNIT_VENDOR="./vendor/phpunit/phpunit/phpunit"
+PHPUNIT_GLOBAL=$(/usr/bin/which phpunit)
+PHPUNIT_EXIST=true
 
-    echo true
-    return
-}
+# Check if phpunit exist in vendor or globally
+if [ ! -x "$PHPUNIT_VENDOR" ] && [ ! -x "$PHPUNIT_GLOBAL" ]
+then
+    PHPUNIT_EXIST=false
+fi
 
 ###
 # Phpunit aliases
@@ -23,10 +19,7 @@ function checkPhpUnit () {
 # punit app/
 ###
 punit() {
-    phpunit1="./vendor/phpunit/phpunit/phpunit"
-    phpunit2=$(/usr/bin/which phpunit)
-
-    if [ $(checkPhpUnit "$phpunit1" "$phpunit2") = false ]
+    if [ $PHPUNIT_EXIST = false ]
     then
         echo "The command 'phpunit' was not found"
         return
@@ -45,4 +38,3 @@ punit() {
         $phpunit2 -c app/
     fi
 }
-
