@@ -22,7 +22,7 @@ dbuild() {
         return
     fi
 
-    if [ "$1" != "" ] && [ -x "$DOCKER" ]
+    if [ "$1" != "" ]
     then
         $DOCKER build -t="$1" .
     else
@@ -45,7 +45,7 @@ drun() {
         return
     fi
 
-    if [ "$1" != "" ] && [ -x "$DOCKER" ]
+    if [ "$1" != "" ]
     then
         $DOCKER run -it "$1" /bin/bash
     else
@@ -68,7 +68,7 @@ dip() {
         return
     fi
 
-    if [ "$1" != "" ] && [ -x "$DOCKER" ]
+    if [ "$1" != "" ]
     then
         $DOCKER inspect --format '{{ .NetworkSettings.IPAddress }}' "$1"
     else
@@ -92,7 +92,7 @@ dstats() {
         return
     fi
 
-    if [ "$1" != "" ] && [ -x "$DOCKER" ]
+    if [ "$1" != "" ]
     then
         $DOCKER stats "$1"
     else
