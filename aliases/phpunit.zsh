@@ -1,5 +1,5 @@
 PHPUNIT_VENDOR="./vendor/phpunit/phpunit/phpunit"
-PHPUNIT_GLOBAL=$(/usr/bin/which phpunit)
+PHPUNIT_GLOBAL=$(which phpunit)
 PHPUNIT_EXIST=true
 
 # Check if phpunit exist in vendor or globally
