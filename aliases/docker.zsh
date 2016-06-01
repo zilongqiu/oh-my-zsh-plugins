@@ -75,3 +75,27 @@ dip() {
         echo "The command 'docker inspect' expect the container name/hash"
     fi
 }
+
+###
+# Docker stats
+#
+# usage examples :
+#
+# dstats
+# dstats php
+# dstats 970eaf375dfd
+###
+dstats() {
+    if [ $DOCKER_EXIST = false ]
+    then
+        echo "The command 'docker' was not found"
+        return
+    fi
+
+    if [ "$1" != "" ] && [ -x "$DOCKER" ]
+    then
+        $DOCKER stats "$1"
+    else
+        $DOCKER stats
+    fi
+}
