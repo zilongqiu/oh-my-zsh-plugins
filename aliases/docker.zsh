@@ -122,6 +122,30 @@ drm() {
         $DOCKER rm "$1"
     else
         $DOCKER stop $($DOCKER ps -a -q)
-        $DOCKER rm $($DOCKER ps -q -a)
+        $DOCKER rm $($DOCKER ps -a -q)
+    fi
+}
+
+###
+# Docker remove image(s)
+#
+# usage examples :
+#
+# drmi
+# drmi php
+# drmi 6a56791effcf
+###
+drmi() {
+    if [ $DOCKER_EXIST = false ]
+    then
+        echo "The command 'docker' was not found"
+        return
+    fi
+
+    if [ "$1" != "" ]
+    then
+        $DOCKER rmi "$1"
+    else
+        $DOCKER rmi $($DOCKER images -a -q)
     fi
 }
