@@ -12,7 +12,8 @@ fi
 #
 # usage example :
 #
-# dbuild MY_TAG_NAME
+# dbuild test
+# dbuild test:latest
 ###
 dbuild() {
     if [ $DOCKER_EXIST = false ]
