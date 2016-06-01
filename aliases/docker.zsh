@@ -99,3 +99,29 @@ dstats() {
         $DOCKER stats
     fi
 }
+
+###
+# Docker remove container(s)
+#
+# usage examples :
+#
+# drm
+# drm php
+# drm 6a56791effcf
+###
+drm() {
+    if [ $DOCKER_EXIST = false ]
+    then
+        echo "The command 'docker' was not found"
+        return
+    fi
+
+    if [ "$1" != "" ]
+    then
+        $DOCKER stop "$1"
+        $DOCKER rm "$1"
+    else
+        $DOCKER stop $($DOCKER ps -a -q)
+        $DOCKER rm $($DOCKER ps -q -a)
+    fi
+}
