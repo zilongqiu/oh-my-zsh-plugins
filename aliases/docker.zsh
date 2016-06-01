@@ -10,7 +10,7 @@ fi
 ###
 # Docker build
 #
-# usage example :
+# usage examples :
 #
 # dbuild test
 # dbuild test:latest
