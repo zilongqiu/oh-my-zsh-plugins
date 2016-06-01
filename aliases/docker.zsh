@@ -52,3 +52,26 @@ drun() {
         echo "The command 'docker run' expect the image name/hash"
     fi
 }
+
+###
+# Docker inspect
+#
+# usage examples :
+#
+# dip php
+# dip 970eaf375dfd
+###
+dip() {
+    if [ $DOCKER_EXIST = false ]
+    then
+        echo "The command 'docker' was not found"
+        return
+    fi
+
+    if [ "$1" != "" ] && [ -x "$DOCKER" ]
+    then
+        $DOCKER inspect --format '{{ .NetworkSettings.IPAddress }}' "$1"
+    else
+        echo "The command 'docker inspect' expect the container name/hash"
+    fi
+}
