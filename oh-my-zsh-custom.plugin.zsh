@@ -1,9 +1,14 @@
-DIRECTORY_CURRENT_EXECUTION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-DIRECTORY_PROJECT=`dirname $0`
-DIRECTORY_ALIAS=$DIRECTORY_PROJECT/aliases
+DIR_CURRENT_EXECUTION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR_PROJECT=`dirname $0`
+DIR_LIB=$DIR_PROJECT/lib
+DIR_ALIAS=$DIR_PROJECT/aliases
+
+# Libraries
+for file in $DIR_LIB/*.zsh; do
+    source $file
+done
 
 # Aliases
-source $DIRECTORY_ALIAS/git.zsh
-source $DIRECTORY_ALIAS/docker.zsh
-source $DIRECTORY_ALIAS/phpunit.zsh
-source $DIRECTORY_ALIAS/custom.zsh
+for file in $DIR_ALIAS/*.zsh; do
+    source $file
+done
