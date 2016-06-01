@@ -9,7 +9,7 @@ then
 fi
 
 ###
-# Phpunit aliases
+# Execute phpunit
 #
 # With execution priority to the vendor phpunit
 #
@@ -25,16 +25,47 @@ punit() {
         return
     fi
 
-    if [ "$1" != "" ] && [ -x "$phpunit1" ]
+    if [ "$1" != "" ] && [ -x "$PHPUNIT_VENDOR" ]
     then
-        $phpunit1 -c "$1"
-    elif [ "$1" = "" ] && [ -x "$phpunit1" ]
+        $PHPUNIT_VENDOR -c "$1"
+    elif [ "$1" = "" ] && [ -x "$PHPUNIT_VENDOR" ]
     then
-        $phpunit1 -c app/
-    elif [ "$1" != "" ] && [ -x "$phpunit2" ]
+        $PHPUNIT_VENDOR -c app/
+    elif [ "$1" != "" ] && [ -x "$PHPUNIT_GLOBAL" ]
     then
-        $phpunit2 -c "$1"
+        $PHPUNIT_GLOBAL -c "$1"
     else
-        $phpunit2 -c app/
+        $PHPUNIT_GLOBAL -c app/
+    fi
+}
+
+###
+# Generate phpunit code coverage in html
+#
+# usage examples :
+#
+# punit-coverage MY_DESTINATION_FOLDER
+# punit-coverage /tmp
+###
+punit-coverage() {
+    if [ $PHPUNIT_EXIST = false ]
+    then
+        echo "The command 'phpunit' was not found"
+        return
+    fi
+
+    FORMAT='--coverage-html'
+    FOLDER='.'
+
+    if [ "$1" != "" ]
+    then
+        FOLDER="$1"
+    fi
+
+    if [ -x "$PHPUNIT_VENDOR" ]
+    then
+        $PHPUNIT_VENDOR $COVERAGE_FORMAT $FOLDER
+    else
+        $PHPUNIT_GLOBAL $COVERAGE_FORMAT $FOLDER
     fi
 }
