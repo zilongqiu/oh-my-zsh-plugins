@@ -44,10 +44,10 @@ punit() {
 #
 # usage examples :
 #
-# punit-coverage MY_DESTINATION_FOLDER
-# punit-coverage /tmp
+# punitc MY_DESTINATION_FOLDER
+# punitc /tmp
 ###
-punit-coverage() {
+punitc() {
     if [ $PHPUNIT_EXIST = false ]
     then
         echo "The command 'phpunit' was not found"
