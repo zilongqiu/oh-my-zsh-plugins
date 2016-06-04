@@ -1,17 +1,17 @@
 # Aliases
 
-alias gs='git status'
-alias gco='git checkout'
-alias gadd='git add -p'
-alias gcreate='git checkout -b'
-alias greset='git reset HEAD --soft'
-alias gback='git reset HEAD~1'
-alias gpush='git push origin $(git_current_branch)'
-alias gpull='git pull origin $(git_current_branch)'
-alias gcommit='git commit -m'
-alias gclean='git clean -fd'
-alias grset='git remote set-url'
-alias gremote='git remote -v'
+alias st='git status'
+alias co='git checkout'
+alias add='git add -p'
+alias cob='git checkout -b'
+alias reset='git reset HEAD --hard'
+alias back='git reset HEAD~1'
+alias push='git push origin $(git_current_branch)'
+alias pull='git pull origin $(git_current_branch)'
+alias commit='git commit -m'
+alias clean='git clean -fd'
+alias remoteset='git remote set-url'
+alias remote='git remote -v'
 
 ###
 # `gitit` -- open your current folder, on your current branch, in GitHub.
