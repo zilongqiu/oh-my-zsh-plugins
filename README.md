@@ -20,4 +20,8 @@ If you prefer antigen over manual installation, add this line in your `~/.zshrc`
 
 And run
 
-    antigen update
+    antigen-bundle update
+
+Then you should restart your terminal or execute
+
+    source ~/.zshrc
