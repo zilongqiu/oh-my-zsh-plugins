@@ -28,6 +28,7 @@ git_set_repo() {
   url="${url/.git/}"
   url="${url/https@/https://}"
   url="${url/com:/com/}"
+  url="${url/ssh:\/\/}"
 }
 
 
