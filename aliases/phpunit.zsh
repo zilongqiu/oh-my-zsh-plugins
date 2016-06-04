@@ -25,15 +25,21 @@ punit() {
         return
     fi
 
+    CONFIGURATION_FILE="app/"
+    DIRECTORY_OR_FILE=""
+
+    if [ "$1" != "" ]; then CONFIGURATION_FILE="$1"; fi
+    if [ "$2" != "" ]; then DIRECTORY_OR_FILE="$2"; fi
+
     if [ "$1" != "" ] && [ -x "$PHPUNIT_VENDOR" ]
     then
-        $PHPUNIT_VENDOR -c "$1"
+        $PHPUNIT_VENDOR -c $CONFIGURATION_FILE $DIRECTORY_OR_FILE
     elif [ "$1" = "" ] && [ -x "$PHPUNIT_VENDOR" ]
     then
         $PHPUNIT_VENDOR -c app/
     elif [ "$1" != "" ] && [ -x "$PHPUNIT_GLOBAL" ]
     then
-        $PHPUNIT_GLOBAL -c "$1"
+        $PHPUNIT_GLOBAL -c $CONFIGURATION_FILE $DIRECTORY_OR_FILE
     else
         $PHPUNIT_GLOBAL -c app/
     fi
