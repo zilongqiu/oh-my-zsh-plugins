@@ -38,7 +38,14 @@ commit() {
 
     types=(feat fix docs style refactor perf test chore)
 
-    if [ "${types[$1]}" = "$1" ]; then
+    MATCH=false
+    for type in $types; do
+        if [ "$type" = "$1" ]; then
+             MATCH=true
+        fi
+    done
+
+    if [ "$MATCH" = false ]; then
         echo "'commit' type not valid.\n"
         echo 'Available types :'
         for type in $types; do print '    - '$type; done
