@@ -9,7 +9,6 @@ alias reset='git reset HEAD --hard'
 alias back='git reset HEAD~1'
 alias push='git push origin $(git_current_branch)'
 alias pull='git pull origin $(git_current_branch)'
-alias commit='git commit -m'
 alias clean='git clean -fd'
 alias diff='git diff'
 alias logs='git log --oneline --decorate'
@@ -22,10 +21,32 @@ alias remote='git remote -v'
 # prune test
 ###
 prune() {
-
     if [ "$1" = "" ]; then echo "'prune' requires a branch name"; return; fi
     git branch -D "$1" && git push origin --delete "$1"
+}
 
+###
+# Validate the commit format before execution
+#
+# commit feat 'This an test'
+###
+commit() {
+    if [ "$#" != 2 ]; then
+        echo "'commit' requires two parameters : type and message"
+        return
+    fi
+
+    types=(feat fix docs style refactor perf test chore)
+
+    if [ ${types[(r)$1]} = $1 ]; then
+        echo "'commit' type not valid.\n"
+        echo 'Available types :'
+        for type in $types; do print '    - '$type; done
+        return
+    fi
+
+    echo $(printf '[%s] %s: %s' $(git_current_branch) "$1" "$2")
+    #git commit -m "\[${git_current_branch}\] '$1': '$2'"
 }
 
 ###
