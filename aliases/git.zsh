@@ -38,15 +38,15 @@ commit() {
 
     types=(feat fix docs style refactor perf test chore)
 
-    if [ ${types[(r)$1]} = $1 ]; then
+    if [ "${types[$1]}" = "$1" ]; then
         echo "'commit' type not valid.\n"
         echo 'Available types :'
         for type in $types; do print '    - '$type; done
         return
     fi
 
-    echo $(printf '[%s] %s: %s' $(git_current_branch) "$1" "$2")
-    #git commit -m "\[${git_current_branch}\] '$1': '$2'"
+    MESSAGE=$(printf '[%s] %s: %s' $(git_current_branch) "$1" "$2")
+    git commit -m "${MESSAGE}"
 }
 
 ###
